@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories("inc/")
 
-add_executable(lab_11 main.cpp classes.hpp classes.cpp)
+add_executable(lab_11 main.cpp inc/classes.hpp inc/classes.cpp)
