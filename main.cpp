@@ -15,6 +15,8 @@ int main() {
         device->poll();
         device->print();
     }
-    mas.clear();
+    for(int i = 0; i < mas.size(); i++){
+        mas.erase(mas.begin() + i);
+    }
     return 0;
 }
