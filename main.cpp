@@ -11,7 +11,7 @@ int main() {
     dev = new myClasses::DevisePDPT("test2", 2);
     mas.push_back(dev);
 
-    for(auto device : mas){
+    for(const auto& device : mas){
         device->poll();
         device->print();
     }
