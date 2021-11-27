@@ -1,37 +1,24 @@
 #include <classes.hpp>
 
 namespace myClasses{
-    pressureSensor::pressureSensor(int address, char name) {
-        srand(time(0));
-        m_address = address;
+    DevisePDPT::DevisePDPT(std::string name, int address) {
         m_name = name;
-        m_pressure = rand() % (816 - 642 + 1) + 642;
-    }
-    pressureSensor::~pressureSensor() {}
-    std::tuple<char, int, float> pressureSensor::poll(){
-        return {m_name, m_address, m_pressure};
-    }
-
-    float pressureSensor::print(){
-        auto [name, address, pressure] = poll();
-        std::cout << "Имя: " << name << "\nАдрес: " << address << "\nДавление: " << pressure << std::endl;
-    }
-
-
-    temperatureSensor::temperatureSensor(int address, char name) {
-        srand(time(0));
         m_address = address;
-        m_name = name;
-        m_temperature = rand() % (100 - 0 + 1) + 100;
+        m_pres = 0;
+        m_temp = 0;
     }
-    temperatureSensor::~temperatureSensor() {}
-
-    std::tuple<char, int, float> temperatureSensor::poll(){
-        return {m_name, m_address, m_temperature};
+    DevisePDPT::~DevisePDPT() {}
+    void DevisePDPT::poll(){
+        srand(time(0));
+        if (m_address == 1){
+            m_temp = rand() % (200 - 0 + 1) + 100;
+            m_pres = rand() % (750 - 680 + 1) + 680;
+        } else if (m_address == 2){
+            m_temp = rand() % (200 - 0 + 1) + 100;
+            m_pres = rand() % (750 - 680 + 1) + 680;
+        }
     }
-
-    float temperatureSensor::print(){
-        auto [name, address, temperature] = poll();
-        std::cout << "Имя: " << name << "\nАдрес: " << address << "\nТемпература: " << temperature << std::endl;
+    float DevisePDPT::print(){
+        std::cout << "Имя: " << m_name << "\nАдрес: " << m_address << "\nДавление: " << m_pres << "\nТемпература: " << m_temp << std::endl;
     }
 }
