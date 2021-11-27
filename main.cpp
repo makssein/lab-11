@@ -16,7 +16,7 @@ int main() {
         device->print();
     }
     for(int i = 0; i < mas.size(); i++){
-        mas.erase(mas.begin() + i);
+        delete mas[i];
     }
     return 0;
 }
